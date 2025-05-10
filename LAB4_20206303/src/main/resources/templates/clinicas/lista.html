@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista clinicas</title>
+    </head>
+    <body>
+
+        <a th:href="@{/clinicas/nuevo}">Nueva Clínica</a>
+        <table>
+            <tr><th>Nombre</th><th>Dirección</th><th>Teléfono</th><th>Acciones</th></tr>
+            <tr th:each="c : ${listaClinicas}">
+                <td th:text="${c.name}"></td>
+                <td th:text="${c.address}"></td>
+                <td th:text="${c.phoneNumber}"></td>
+                <td>
+                    <a th:href="@{'/clinicas/crear/' + ${c.id}}">crear</a>
+                    <a th:href="@{'/clinicas/editar/' + ${c.id}}">editar</a>
+                </td>
+            </tr>
+        </table>
+
+    </body>
+</html>
+
+

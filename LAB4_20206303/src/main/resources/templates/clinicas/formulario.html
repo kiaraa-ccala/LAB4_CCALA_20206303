@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulario Clinica</title>
+    </head>
+    <body>
+
+        <h1 th:text="${clinic.id != null} ? 'Editar Clínica' : 'Nueva Clínica'"></h1>
+        <form th:action="@{/clinicas/guardar}" th:object="${clinic}" method="post">
+            <label>Nombre:</label>
+            <input type="text" th:field="*{c.name}" />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{c.name}"></div>
+
+            <label>Dirección:</label>
+            <input type="text" th:field="*{c.address}" />
+            <div th:if="${#fields.hasErrors('address')}" th:errors="*{c.address}"></div>
+
+            <label>Teléfono:</label>
+            <input type="text" th:field="*{c.phoneNumber}" />
+            <div th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{c.phoneNumber}"></div>
+
+            <button type="submit">Guardar</button>
+        </form>
+
+    </body>
+</html>
